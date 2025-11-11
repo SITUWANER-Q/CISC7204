@@ -1,43 +1,30 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy Static HTML to GitHub Pages
 
+# 触发条件：推送到 main 分支时自动运行，也支持手动触发
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: [ main ]
+  workflow_dispatch:  # 允许在 GitHub 界面手动触发工作流
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# 权限配置：确保有足够权限创建/更新 gh-pages 分支
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: read  # 允许读取仓库代码
+  pages: write    # 允许写入 Pages 部署内容
+  id-token: write # 允许生成身份令牌（用于部署验证）
 
 jobs:
-  # Single deploy job since we're just deploying
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
+      # 步骤 1：拉取仓库代码（确保能获取到 index.html）
+      - name: Checkout repository code
+        uses: actions/checkout@v4  # 官方拉取代码动作，稳定可靠
+
+      # 步骤 2：部署到 GitHub Pages（关键：使用正确的动作名称）
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4  # 正确的部署动作（非 actions/deploy-github-pages）
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动生成的令牌，无需手动配置
+          publish_dir: ./  # 部署根目录的所有文件（确保 index.html 在根目录）
+          force_orphan: true  # 强制创建独立的 gh-pages 分支，避免历史文件冲突
+          enable_jekyll: false  # 禁用 Jekyll 处理（纯静态 HTML 无需 Jekyll）
