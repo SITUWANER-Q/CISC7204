@@ -5,6 +5,7 @@
   "website": "https://github.com/SITUWANER-Q/CISC7204",
   "repository": "https://github.com/SITUWANER-Q/CISC7204",
   "logo": "https://raw.githubusercontent.com/SITUWANER-Q/CISC7204/main/assets/macau.png",
+  "main": "app.py",
   "env": {
     "PYTHON_VERSION": "3.9"
   },

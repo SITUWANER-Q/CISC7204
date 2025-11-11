@@ -14,7 +14,7 @@ def main():
 
     # 检查必要的文件是否存在
     required_files = [
-        'macau_tech_analysis.py',
+        'app.py',
         'viz_data.json',
         'detailed_analysis.json'
     ]
@@ -36,7 +36,7 @@ def main():
         print("按 Ctrl+C 停止服务器")
         print("=" * 50)
 
-        subprocess.run([sys.executable, 'macau_tech_analysis.py'],
+        subprocess.run([sys.executable, 'app.py'],
                       check=True)
 
     except KeyboardInterrupt:
