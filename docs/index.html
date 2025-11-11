@@ -1,0 +1,210 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>澳门住户资讯科技使用状况分析</title>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                margin: 0;
+                padding: 20px;
+                background-color: #f8f9fa;
+                color: #333;
+                line-height: 1.6;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                overflow: hidden;
+            }
+            .header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 40px 30px;
+                text-align: center;
+            }
+            .header h1 {
+                margin: 0;
+                font-size: 2.5em;
+                font-weight: 300;
+            }
+            .header p {
+                margin: 10px 0 0 0;
+                opacity: 0.9;
+                font-size: 1.2em;
+            }
+            .content {
+                padding: 30px;
+            }
+            .chart-container {
+                margin: 30px 0;
+                padding: 20px;
+                border: 1px solid #e9ecef;
+                border-radius: 8px;
+                background: #f8f9fa;
+            }
+            .chart-title {
+                font-size: 1.5em;
+                font-weight: 600;
+                margin-bottom: 15px;
+                color: #495057;
+            }
+            .notice {
+                background: #fff3cd;
+                border: 1px solid #ffeaa7;
+                color: #856404;
+                padding: 15px;
+                border-radius: 5px;
+                margin: 20px 0;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+                gap: 30px;
+                margin: 30px 0;
+            }
+            .full-width {
+                grid-column: 1 / -1;
+            }
+            .footer {
+                background: #f8f9fa;
+                padding: 20px 30px;
+                text-align: center;
+                color: #6c757d;
+                border-top: 1px solid #e9ecef;
+            }
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                margin: 30px 0;
+            }
+            .stat-card {
+                background: white;
+                padding: 20px;
+                border-radius: 8px;
+                border: 1px solid #e9ecef;
+                text-align: center;
+            }
+            .stat-number {
+                font-size: 2em;
+                font-weight: 600;
+                color: #667eea;
+            }
+            .stat-label {
+                color: #6c757d;
+                margin-top: 5px;
+            }
+            .wordcloud-container {
+                text-align: center;
+                margin: 30px 0;
+            }
+            .wordcloud-container img {
+                max-width: 100%;
+                height: auto;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>澳门住户资讯科技使用状况分析</h1>
+                <p>基于2024年澳门统计数据的可视化分析</p>
+            </div>
+
+            <div class="content">
+                <div class="notice">
+                    <strong>📊 静态版本说明：</strong> 这是为了GitHub Pages部署而生成的静态版本。
+                    完整的交互功能请查看 <a href="https://github.com/[你的用户名]/[仓库名]" target="_blank">GitHub仓库</a> 并本地运行。
+                </div>
+
+                <h2>数据概览</h2>
+                <p>这份分析基于澳门统计暨普查局2024年的数据，涵盖了澳门居民在资讯科技使用方面的关键统计特征。</p>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">统计维度</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">样本数据</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">2024</div>
+                        <div class="stat-label">数据年份</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">分析章节</div>
+                    </div>
+                </div>
+
+                <div class="grid">
+    
+                    <div class="chart-container full-width">
+                        <div class="chart-title">科技产品使用率</div>
+                        <div class="chart">
+                            <div>                            <div id="71352137-b429-4c0b-9379-ca364c246aeb" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("71352137-b429-4c0b-9379-ca364c246aeb")) {                    Plotly.newPlot(                        "71352137-b429-4c0b-9379-ca364c246aeb",                        [{"hovertemplate":"\u4ea7\u54c1\u7c7b\u578b=%{x}\u003cbr\u003e\u4f7f\u7528\u7387 (%)=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["mobile_phone","laptop_computer","desktop_computer","tablet"],"xaxis":"x","y":{"dtype":"f8","bdata":"MzMzMzMzTkDNzMzMzMxIQM3MzMzMzD5AzczMzMzMREA="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"\u4ea7\u54c1\u7c7b\u578b"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"\u4f7f\u7528\u7387 (%)"}},"legend":{"tracegroupgap":0},"title":{"text":"\u79d1\u6280\u4ea7\u54c1\u4f7f\u7528\u7387 (%)"},"barmode":"relative","font":{"family":"Source Sans Pro","size":12},"plot_bgcolor":"white","paper_bgcolor":"white"},                        {"responsive": true}                    )                };            </script>        </div>
+                        </div>
+                    </div>
+        
+                    <div class="chart-container">
+                        <div class="chart-title">互联网接入情况</div>
+                        <div class="chart">
+                            <div>                            <div id="c507ec7d-b06c-4303-9a83-3ed09119d25d" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script type="text/javascript">                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("c507ec7d-b06c-4303-9a83-3ed09119d25d")) {                    Plotly.newPlot(                        "c507ec7d-b06c-4303-9a83-3ed09119d25d",                        [{"hovertemplate":"\u63a5\u5165\u7c7b\u578b=%{x}\u003cbr\u003e\u4eba\u6570=%{y}\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"","marker":{"color":"#636efa","pattern":{"shape":""}},"name":"","orientation":"v","showlegend":false,"textposition":"auto","x":["\u6709\u63a5\u5165\u4e92\u8054\u7f51","\u6ca1\u6709\u63a5\u5165\u4e92\u8054\u7f51"],"xaxis":"x","y":{"dtype":"i2","bdata":"gANoAA=="},"yaxis":"y","type":"bar"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermap":[{"type":"scattermap","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,1.0],"title":{"text":"\u63a5\u5165\u7c7b\u578b"}},"yaxis":{"anchor":"x","domain":[0.0,1.0],"title":{"text":"\u4eba\u6570"}},"legend":{"tracegroupgap":0},"title":{"text":"\u4e92\u8054\u7f51\u63a5\u5165\u60c5\u51b5"},"barmode":"relative","font":{"family":"Source Sans Pro","size":12},"plot_bgcolor":"white","paper_bgcolor":"white"},                        {"responsive": true}                    )                };            </script>        </div>
+                        </div>
+                    </div>
+        
+                    <div class="chart-container full-width">
+                        <div class="chart-title">关键词分析</div>
+                        <div class="wordcloud-container">
+                            <img src="data:image/png;base64,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" alt="关键词云分析">
+                        </div>
+                    </div>
+        
+                </div>
+
+                <h2>核心发现</h2>
+                <ul>
+                    <li><strong>数据覆盖全面：</strong>涵盖10个主要统计维度，展现澳门居民科技使用全景</li>
+                    <li><strong>人口统计维度突出：</strong>年龄、教育程度和活动状态是三大核心分析维度</li>
+                    <li><strong>职业影响显著：</strong>互联网和通信工具使用情况受到职业特征显著影响</li>
+                    <li><strong>经济发展映射：</strong>商业用途科技应用反映澳门经济发展特征</li>
+                </ul>
+
+                <h2>分析章节</h2>
+                <ol>
+                    <li><strong>数字鸿沟的代际差异：</strong>不同年龄段的科技使用差异分析</li>
+                    <li><strong>科技产品的使用偏好：</strong>各类科技产品在澳门的受欢迎程度</li>
+                    <li><strong>多视角综合分析：</strong>从不同维度审视澳门的数字化进程</li>
+                    <li><strong>趋势预测与展望：</strong>澳门数字化发展的未来趋势</li>
+                    <li><strong>政策建议与行动计划：</strong>缩小数字鸿沟的政策建议</li>
+                </ol>
+
+                <h2>技术栈</h2>
+                <ul>
+                    <li><strong>前端框架:</strong> Dash (Plotly)</li>
+                    <li><strong>数据处理:</strong> Pandas, NumPy</li>
+                    <li><strong>可视化:</strong> Plotly, NetworkX, WordCloud</li>
+                    <li><strong>部署:</strong> GitHub Pages (静态版本)</li>
+                </ul>
+            </div>
+
+            <div class="footer">
+                <p>© 2024 澳门住户资讯科技使用状况分析 | 数据来源：澳门统计暨普查局</p>
+                <p>如需完整交互版本，请访问 <a href="https://github.com/[你的用户名]/[仓库名]" target="_blank">GitHub仓库</a></p>
+            </div>
+        </div>
+    </body>
+    </html>
+    
