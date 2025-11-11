@@ -1,30 +1,49 @@
-name: Deploy Static HTML to GitHub Pages
+name: Deploy static content to Pages
 
-# 触发条件：推送到 main 分支时自动运行，也支持手动触发
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:  # 允许在 GitHub 界面手动触发工作流
+    branches: ["main"]
+  workflow_dispatch:
 
-# 权限配置：确保有足够权限创建/更新 gh-pages 分支
 permissions:
-  contents: read  # 允许读取仓库代码
-  pages: write    # 允许写入 Pages 部署内容
-  id-token: write # 允许生成身份令牌（用于部署验证）
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      # 步骤 1：拉取仓库代码（确保能获取到 index.html）
-      - name: Checkout repository code
-        uses: actions/checkout@v4  # 官方拉取代码动作，稳定可靠
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      # 步骤 2：部署到 GitHub Pages（关键：使用正确的动作名称）
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4  # 正确的部署动作（非 actions/deploy-github-pages）
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动生成的令牌，无需手动配置
-          publish_dir: ./docs  # 部署根目录的所有文件（确保 index.html 在根目录）
-          force_orphan: true  # 强制创建独立的 gh-pages 分支，避免历史文件冲突
-          enable_jekyll: false  # 禁用 Jekyll 处理（纯静态 HTML 无需 Jekyll）
+          python-version: '3.9'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Export Dash app to static files
+        run: python export_static.py
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
