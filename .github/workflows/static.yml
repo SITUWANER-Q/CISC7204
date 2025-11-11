@@ -25,6 +25,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4  # 正确的部署动作（非 actions/deploy-github-pages）
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # 自动生成的令牌，无需手动配置
-          publish_dir: ./  # 部署根目录的所有文件（确保 index.html 在根目录）
+          publish_dir: ./docs  # 部署根目录的所有文件（确保 index.html 在根目录）
           force_orphan: true  # 强制创建独立的 gh-pages 分支，避免历史文件冲突
           enable_jekyll: false  # 禁用 Jekyll 处理（纯静态 HTML 无需 Jekyll）
