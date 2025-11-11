@@ -1,0 +1,16 @@
+{
+  "name": "macau-tech-analysis",
+  "description": "澳门住户资讯科技使用状况分析 - 交互式数据可视化应用",
+  "keywords": ["dash", "plotly", "data-visualization", "macau", "technology-analysis"],
+  "website": "https://github.com/SITUWANER-Q/CISC7204",
+  "repository": "https://github.com/SITUWANER-Q/CISC7204",
+  "logo": "https://raw.githubusercontent.com/SITUWANER-Q/CISC7204/main/assets/macau.png",
+  "env": {
+    "PYTHON_VERSION": "3.9"
+  },
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-python"
+    }
+  ]
+}
